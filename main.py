@@ -1,6 +1,6 @@
-from classes.Exceptions import *
-from classes.User import *
-from classes.Editor import *
+from Exceptions import *
+from User import *
+from Editor import *
 
 
 user1 = User("mbochenek", "haslo")

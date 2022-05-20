@@ -1,5 +1,5 @@
-from classes.User import *
-from classes.Exceptions import *
+from User import *
+from Exceptions import *
 
 
 class Editor:
@@ -10,8 +10,12 @@ class Editor:
     def login(self, user_list):
         username = input("Podaj nazwę użtykownika: ")
         password = input("Podaj hasło: ")
-        user_list.login(username, password)
-
+        try:
+            user_list.login(username, password)
+        except IncorrectUsername as error:
+            print(error)
+        except IncorrectPassword as error:
+            print(error)
     def is_permitted(self):
         pass
 
