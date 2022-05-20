@@ -1,17 +1,21 @@
-from classes.User import *
-from classes.Exceptions import *
+from User import *
+from Exceptions import *
 
 
 class Editor:
     def __init__(self):
-        self.user-name = None
+        self.user_name = None
         # self.options = {"a": self.login(), "b": self.test(), "c": self.change(), "d": self.quit()}
 
     def login(self, user_list):
         username = input("Podaj nazwę użtykownika: ")
         password = input("Podaj hasło: ")
-        user_list.login(username, password)
-
+        try:
+            user_list.login(username, password)
+        except IncorrectUsername as error:
+            print(error)
+        except IncorrectPassword as error:
+            print(error)
     def is_permitted(self):
         pass
 
