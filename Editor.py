@@ -4,7 +4,7 @@ from classes.Exceptions import *
 
 class Editor:
     def __init__(self):
-        self.user-name = None
+        self.user_name = None
         # self.options = {"a": self.login(), "b": self.test(), "c": self.change(), "d": self.quit()}
 
     def login(self, user_list):
