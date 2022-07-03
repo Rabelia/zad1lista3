@@ -6,26 +6,36 @@ class AuthenticException(Exception):
 
 class IncorrectPassword(AuthenticException):
     def __init__(self):
+        super().__init__()
         print("Podane hasło jest niepoprawne.")
 
 
 class IncorrectUsername(AuthenticException):
     def __init__(self):
+        super().__init__()
         print("Podany username jest niepoperawny.")
 
 
 class NotLoggedError(AuthenticException):
+    def __init__(self):
+        super().__init__()
+        print("Użytkownik niezalogowany.")
     pass
 
 
 class PasswordTooShort(AuthenticException):
-    pass
+    def __init__(self):
+        super().__init__()
+        print("Za krótkie hasło.")
 
 
 class UsernameAlreadyExists(AuthenticException):
     def __init__(self):
+        super().__init__()
         print("Użytkownik istnieje")
 
 
 class NotPermittedError(AuthenticException):
-    pass
+    def __init__(self):
+        super().__init__()
+        print("Brak uprawnień.")

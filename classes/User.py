@@ -1,6 +1,6 @@
 import hashlib
-from Exceptions import *  # importuje klase wyjatkow
-from Editor import *
+from classes.Exceptions import *  # importuje klase wyjatkow
+from classes.Editor import *
 
 
 class User:
@@ -43,15 +43,12 @@ class Authenticator:
 
     def login(self, username, password):
         tmp_passwd = f"{username}:{password}"
-        try:
-            if hashlib.sha256(str(tmp_passwd).encode(
-                    'utf-8')).hexdigest() == self.users[username].password.hexdigest():  # hexdigest wyswietla "szyfr"
-                self.users[username].is_logged = True
-                print(f"Logowanie użytkownimka {username} powiodło się")
-            else:
-                raise IncorrectPassword
-        except KeyError:
-            raise IncorrectUsername
+        if not hashlib.sha256(str(tmp_passwd).encode(
+                'utf-8')).hexdigest() == self.users[username].password.hexdigest():  # hexdigest wyswietla "szyfr"
+            self.users[username].is_logged = True
+            print(f"Logowanie użytkownimka {username} powiodło się")
+        else:
+            raise IncorrectUsername()
 
 
     def is_logged_in(self, user):
@@ -85,10 +82,8 @@ class Authorizor():
         except IncorrectUsername as error:
             print(error)
 
-    def check_permission(self, user, permission):  # sprawdzanie, czy podany użytkownik ma podane uprawnienie
-        if user in self.permissions[permission]:
-            print("Użytkownik posiada podane uprawnienie")
-            return True
-        else:
-            print("Użytkownik nie posiada podanego uprawnienia")
-            return False
+    def check_permission(self, user, permissions):
+        try:
+            permissions == user
+        except PermissionError as error:
+            print(error)
